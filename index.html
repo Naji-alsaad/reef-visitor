@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مرحبًا بك في ريف السعودية</title>
+    <style>
+        body {
+            font-family: 'Cairo', Arial, sans-serif;
+            background-color: #f9fafb;
+            padding: 20px;
+            text-align: right;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        img {
+            width: 180px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        h1, h2, h3 {
+            color: #004080;
+            margin-top: 20px;
+        }
+        p, input, button {
+            font-size: 18px;
+        }
+        .welcome {
+            background: #e6f2ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 20px;
+            color: #004080;
+            text-align: center;
+        }
+        iframe {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #004080;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0066cc;
+        }
+        .notes-display {
+            background: #eef3f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #007acc;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        a:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="reef_logo.jpeg" alt="شعار ريف السعودية">
+
+    <div class="welcome">
+        أهلًا وسهلًا بكم في ريف السعودية!<br>نتمنى لكم تجربة مميزة وزيارة موفقة.
+    </div>
+
+    <h1>ملاحظات الزائر:</h1>
+
+    <h3>الملاحظة الأولى:</h3>
+    <input type="text" id="noteInput1" placeholder="اكتب الملاحظة العامة هنا...">
+
+    <h3>الملاحظة الثانية:</h3>
+    <input type="text" id="noteInput2" placeholder="اكتب تفاصيل الموقف هنا...">
+
+    <h3>الملاحظة الثالثة:</h3>
+    <input type="text" id="noteInput3" placeholder="اكتب تفاصيل المكتب هنا...">
+
+    <button onclick="changeNotes()">تحديث جميع الملاحظات</button>
+
+    <div class="notes-display">
+        <p id="visitor-note1">الملاحظة الأولى ستظهر هنا...</p>
+        <p id="visitor-note2">الملاحظة الثانية ستظهر هنا...</p>
+        <p id="visitor-note3">الملاحظة الثالثة ستظهر هنا...</p>
+    </div>
+
+    <h2>خريطة مواقف ريف السعودية:</h2>
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.419321404054!2d46.67823371500127!3d24.71338798411853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03e9e7b8e0a3%3A0xcee0e3ffae2e5e92!2sReef%20Saudi%20Parking!5e0!3m2!1sar!2ssa!4v1683567896543!5m2!1sar!2ssa"
+        width="100%" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <br><br>
+
+    <a href="https://maps.app.goo.gl/CWanguyr2JHwxe168?g_st=com.google.maps.preview.copy" target="_blank">
+        الانتقال إلى موقع المواقف على الخريطة (Google Maps)
+    </a>
+
+    <br><br>
+
+    <a href="https://YOUR-WAYFINDER-LINK.com" target="_blank">
+        الانتقال إلى الخريطة الداخلية (Wayfinder)
+    </a>
+
+</div>
+
+<script>
+function changeNotes() {
+  var newNote1 = document.getElementById('noteInput1').value;
+  var newNote2 = document.getElementById('noteInput2').value;
+  var newNote3 = document.getElementById('noteInput3').value;
+  document.getElementById('visitor-note1').innerText = newNote1;
+  document.getElementById('visitor-note2').innerText = newNote2;
+  document.getElementById('visitor-note3').innerText = newNote3;
+}
+</script>
+
+</body>
+</html>
