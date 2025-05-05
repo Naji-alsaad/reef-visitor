@@ -3,19 +3,18 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>خدمات المساندة</title>
+    <title>خدمات المساندة - ريف</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             direction: rtl;
-        }
-        .logo {
-            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
         }
         .logo img {
             width: 120px;
+            margin-bottom: 10px;
         }
         h2 {
             color: #333;
@@ -23,6 +22,7 @@
         .btn {
             display: block;
             width: 80%;
+            max-width: 400px;
             margin: 10px auto;
             padding: 15px;
             font-size: 18px;
@@ -32,11 +32,48 @@
             text-decoration: none;
             color: white;
         }
-        .btn.green { background-color: #28a745; }
-        .btn.blue { background-color: #007bff; }
-        .btn.dark { background-color: #343a40; }
-        .btn.orange { background-color: #ff8c00; }
+        .green { background-color: #28a745; }
+        .blue { background-color: #007bff; }
+        .dark { background-color: #343a40; }
+        .orange { background-color: #ff8c00; }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input, textarea, button[type="submit"] {
+            display: block;
+            width: 90%;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+        }
     </style>
+    <script>
+        function toggleForm() {
+            var form = document.getElementById("supportForm");
+            if (form.style.display === "none") {
+                form.style.display = "block";
+                window.scrollTo({ top: form.offsetTop - 50, behavior: 'smooth' });
+            } else {
+                form.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="logo">
@@ -47,6 +84,16 @@
     <a class="btn green" href="https://wa.me/966551135818" target="_blank">مدير الخدمات العامة</a>
     <a class="btn blue" href="https://wa.me/966575540766" target="_blank">موظف الاستقبال</a>
     <a class="btn dark" href="https://wa.me/966556927328" target="_blank">موظف الصيانة</a>
-    <a class="btn orange" href="https://formspree.io/f/xjkwwyal" target="_blank">تعبئة نموذج بلاغ</a>
+
+    <button class="btn orange" onclick="toggleForm()">إرسال بلاغ</button>
+
+    <form id="supportForm" action="https://formspree.io/f/xjkwwyal" method="POST">
+        <h3>نموذج إرسال بلاغ</h3>
+        <input type="text" name="name" placeholder="الاسم" required>
+        <input type="text" name="service" placeholder="نوع الخدمة / البلاغ" required>
+        <input type="text" name="location" placeholder="الموقع" required>
+        <textarea name="details" placeholder="تفاصيل المشكلة" rows="5" required></textarea>
+        <button type="submit">إرسال البلاغ</button>
+    </form>
 </body>
 </html>
