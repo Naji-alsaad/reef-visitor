@@ -36,6 +36,7 @@
         .blue { background-color: #007bff; }
         .dark { background-color: #343a40; }
         .orange { background-color: #ff8c00; }
+        .purple { background-color: #6f42c1; }
 
         form {
             background: #ffffff;
@@ -64,8 +65,8 @@
         }
     </style>
     <script>
-        function toggleForm() {
-            var form = document.getElementById("supportForm");
+        function toggleForm(id) {
+            var form = document.getElementById(id);
             if (form.style.display === "none") {
                 form.style.display = "block";
                 window.scrollTo({ top: form.offsetTop - 50, behavior: 'smooth' });
@@ -85,7 +86,8 @@
     <a class="btn blue" href="https://wa.me/966575540766" target="_blank">موظف الاستقبال</a>
     <a class="btn dark" href="https://wa.me/966556927328" target="_blank">موظف الصيانة</a>
 
-    <button class="btn orange" onclick="toggleForm()">إرسال بلاغ</button>
+    <button class="btn orange" onclick="toggleForm('supportForm')">إرسال بلاغ</button>
+    <button class="btn purple" onclick="toggleForm('visitForm')">تفاصيل الزيارة</button>
 
     <form id="supportForm" action="https://formspree.io/f/xjkwwyal" method="POST">
         <h3>نموذج إرسال بلاغ</h3>
@@ -94,6 +96,15 @@
         <input type="text" name="location" placeholder="الموقع" required>
         <textarea name="details" placeholder="تفاصيل المشكلة" rows="5" required></textarea>
         <button type="submit">إرسال البلاغ</button>
+    </form>
+
+    <form id="visitForm" action="https://formspree.io/f/xjkwwyal" method="POST">
+        <h3>تفاصيل الزيارة</h3>
+        <input type="text" name="visitor_name" placeholder="اسم الزائر" required>
+        <input type="text" name="visit_time" placeholder="التاريخ والوقت" required>
+        <input type="text" name="visit_purpose" placeholder="جهة الزيارة" required>
+        <textarea name="visit_notes" placeholder="ملاحظات إضافية" rows="5" required></textarea>
+        <button type="submit">إرسال التفاصيل</button>
     </form>
 </body>
 </html>
