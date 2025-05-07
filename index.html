@@ -37,6 +37,7 @@
         .dark { background-color: #343a40; }
         .orange { background-color: #ff8c00; }
         .purple { background-color: #6f42c1; }
+        .red { background-color: #d9534f; }
 
         form {
             background: #ffffff;
@@ -88,6 +89,7 @@
 
     <button class="btn orange" onclick="toggleForm('supportForm')">إرسال بلاغ</button>
     <button class="btn purple" onclick="toggleForm('visitForm')">تفاصيل الزيارة</button>
+    <button class="btn red" onclick="toggleForm('incidentForm')">محضر واقعة</button>
 
     <form id="supportForm" action="https://formspree.io/f/xjkwwyal" method="POST">
         <h3>نموذج إرسال بلاغ</h3>
@@ -105,6 +107,16 @@
         <input type="text" name="visit_purpose" placeholder="جهة الزيارة" required>
         <textarea name="visit_notes" placeholder="ملاحظات إضافية" rows="5" required></textarea>
         <button type="submit">إرسال التفاصيل</button>
+    </form>
+
+    <form id="incidentForm" action="https://formspree.io/f/xjkwwyal" method="POST">
+        <h3>محضر واقعة</h3>
+        <input type="text" name="reporter_name" placeholder="اسم المبلغ" required>
+        <input type="text" name="incident_type" placeholder="نوع الواقعة" required>
+        <input type="text" name="incident_time" placeholder="التاريخ والوقت" required>
+        <input type="text" name="incident_location" placeholder="الموقع" required>
+        <textarea name="incident_details" placeholder="تفاصيل الواقعة" rows="5" required></textarea>
+        <button type="submit">إرسال محضر الواقعة</button>
     </form>
 </body>
 </html>
