@@ -30,7 +30,6 @@
         }
         .orange { background-color: #ff8c00; }
         .purple { background-color: #6f42c1; }
-        .red { background-color: #d9534f; }
         form {
             background: #ffffff;
             padding: 20px;
@@ -43,7 +42,7 @@
             margin-left: auto;
             margin-right: auto;
         }
-        input, textarea, button[type="submit"] {
+        input, textarea, select, button[type="submit"] {
             display: block;
             width: 90%;
             margin: 10px auto;
@@ -58,6 +57,10 @@
         }
         .logo {
             margin-bottom: 20px;
+        }
+        .checkbox-group {
+            text-align: right;
+            margin-bottom: 10px;
         }
     </style>
     <script>
@@ -78,15 +81,28 @@
     </div>
     <h2>إدارة خدمات المساندة - ريف السعودية</h2>
 
-    <button class="btn orange" onclick="toggleForm('maintenanceForm')">بلاغ صيانة</button>
+    <button class="btn orange" onclick="toggleForm('maintenanceForm')">الصيانة المطلوبة</button>
     <button class="btn purple" onclick="toggleForm('meetingForm')">الاجتماعات والزيارات</button>
-    <button class="btn red" onclick="toggleForm('notesForm')">ملاحظات</button>
 
-    <!-- نموذج بلاغ صيانة -->
+    <!-- نموذج الصيانة المطلوبة -->
     <form id="maintenanceForm" action="https://formspree.io/f/xjkwwyal" method="POST">
-        <h3>بلاغ صيانة</h3>
-        <input type="text" name="maintenance_type" placeholder="نوع الصيانة" required>
-        <input type="text" name="location" placeholder="الموقع" required>
+        <h3>الصيانة المطلوبة</h3>
+        <input type="text" name="employee_name" placeholder="اسم موظف مقدم الطلب" required>
+        
+        <select name="department" required>
+            <option value="" disabled selected>القسم والإدارة</option>
+            <option value="مكتب الأمين العام">مكتب الأمين العام</option>
+            <option value="مكتب نائب الأمين العام">مكتب نائب الأمين العام</option>
+            <option value="إدارة الخدمات المشتركة">إدارة الخدمات المشتركة</option>
+            <option value="القانونية">القانونية</option>
+            <option value="إدارة التواصل الإعلامي">إدارة التواصل الإعلامي</option>
+            <option value="المشاريع">المشاريع</option>
+            <option value="إدارة الجودة والتميز">إدارة الجودة والتميز</option>
+            <option value="العمليات">العمليات</option>
+        </select>
+
+        <input type="text" name="phone_number" placeholder="رقم الجوال" required>
+        <input type="text" name="location" placeholder="موقع البلاغ" required>
         <textarea name="details" placeholder="تفاصيل الصيانة" rows="5" required></textarea>
         <button type="submit">إرسال البلاغ</button>
     </form>
@@ -94,20 +110,32 @@
     <!-- نموذج الاجتماعات والزيارات -->
     <form id="meetingForm" action="https://formspree.io/f/xjkwwyal" method="POST">
         <h3>الاجتماعات والزيارات</h3>
+
+        <select name="department" required>
+            <option value="" disabled selected>اسم الإدارة في البرنامج</option>
+            <option value="مكتب الأمين العام">مكتب الأمين العام</option>
+            <option value="مكتب نائب الأمين العام">مكتب نائب الأمين العام</option>
+            <option value="إدارة الخدمات المشتركة">إدارة الخدمات المشتركة</option>
+            <option value="القانونية">القانونية</option>
+            <option value="إدارة التواصل الإعلامي">إدارة التواصل الإعلامي</option>
+            <option value="المشاريع">المشاريع</option>
+            <option value="إدارة الجودة والتميز">إدارة الجودة والتميز</option>
+            <option value="العمليات">العمليات</option>
+        </select>
+
+        <input type="text" name="employee_name" placeholder="اسم موظف مقدم الطلب" required>
         <input type="text" name="visitor_name" placeholder="اسم الزائر" required>
-        <input type="text" name="visit_date" placeholder="التاريخ والوقت" required>
-        <input type="text" name="department" placeholder="جهة الزيارة" required>
+        <input type="text" name="visitor_phone" placeholder="رقم الزائر" required>
+        <input type="text" name="visit_date" placeholder="تاريخ ووقت الزيارة" required>
+
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="services[]" value="موقف خاص"> موقف خاص ✅</label><br>
+            <label><input type="checkbox" name="services[]" value="استقبال وتوصيل الزائر"> استقبال وتوصيل الزائر ✅</label><br>
+            <label><input type="checkbox" name="services[]" value="ضيافة"> ضيافة ✅</label>
+        </div>
+
         <textarea name="visit_notes" placeholder="تفاصيل الزيارة" rows="5" required></textarea>
         <button type="submit">إرسال التفاصيل</button>
-    </form>
-
-    <!-- نموذج الملاحظات -->
-    <form id="notesForm" action="https://formspree.io/f/xjkwwyal" method="POST">
-        <h3>ملاحظات</h3>
-        <input type="text" name="note_subject" placeholder="عنوان الملاحظة" required>
-        <input type="text" name="location" placeholder="الموقع" required>
-        <textarea name="note_details" placeholder="تفاصيل الملاحظة" rows="5" required></textarea>
-        <button type="submit">إرسال الملاحظة</button>
     </form>
 </body>
 </html>
