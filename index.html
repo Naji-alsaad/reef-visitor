@@ -1,147 +1,80 @@
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>خدمات المساندة - ريف السعودية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات ريف السعودية</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            font-family: "Arial", sans-serif;
             direction: rtl;
-            text-align: center;
-            padding: 20px;
+            text-align: right;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 300px;
+            margin: 40px auto;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            width: 100px;
+            display: block;
+            margin: 0 auto 10px auto;
         }
         h2 {
-            color: #333;
+            color: #007b55;
+            font-size: 15px;
+            text-align: center;
+            margin-bottom: 15px;
         }
-        .btn {
-            display: block;
-            width: 80%;
-            max-width: 400px;
-            margin: 10px auto;
-            padding: 15px;
-            font-size: 18px;
+        button {
+            width: 90%;
+            padding: 7px;
+            font-size: 12px;
             border: none;
-            border-radius: 8px;
+            color: white;
+            border-radius: 5px;
             cursor: pointer;
-            text-decoration: none;
-            color: white;
+            margin-bottom: 8px;
+            transition: background-color 0.3s;
+            float: right;
+            margin-right: 5%;
         }
-        .orange { background-color: #ff8c00; }
-        .purple { background-color: #6f42c1; }
-        form {
-            background: #ffffff;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            display: none;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
+        .maintenance {
+            background-color: #f39c12;
         }
-        input, textarea, select, button[type="submit"] {
-            display: block;
-            width: 90%;
-            margin: 10px auto;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .visits {
+            background-color: #8e44ad;
         }
-        button[type="submit"] {
-            background-color: #007BFF;
-            color: white;
-            border: none;
+        button:hover {
+            opacity: 0.9;
         }
-        .checkbox-group {
-            text-align: right;
-            margin-bottom: 10px;
-        }
-        .input-label {
-            text-align: right;
-            margin-bottom: 5px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-        .input-label img {
-            margin-left: 5px;
+        .footer {
+            margin-top: 10px;
+            font-size: 10px;
+            color: #777;
+            text-align: center;
         }
     </style>
-    <script>
-        function toggleForm(id) {
-            const form = document.getElementById(id);
-            const allForms = document.querySelectorAll("form");
-            allForms.forEach(f => f.style.display = "none");
-
-            if (form) {
-                form.style.display = "block";
-            }
-        }
-    </script>
 </head>
 <body>
-    <h2>خدمات المساندة - ريف السعودية</h2>
 
-    <button class="btn orange" onclick="toggleForm('maintenanceForm')">الصيانة المطلوبة</button>
-    <button class="btn purple" onclick="toggleForm('meetingForm')">الاجتماعات والزيارات</button>
+<div class="container">
+    <img src="./logo.png" class="logo" alt="شعار ريف السعودية">
+    <h2>إدارة خدمات المساندة</h2>
+    <button class="maintenance" onclick="window.location.href='maintenance-form.html'">الصيانة المطلوبة</button>
+    <button class="visits" onclick="window.location.href='visit-form.html'">الاجتماعات والزيارات</button>
+    <div class="footer">
+        &copy; 2025 ريف السعودية
+    </div>
+</div>
 
-    <!-- نموذج الصيانة المطلوبة -->
-    <form id="maintenanceForm">
-        <h3>الصيانة المطلوبة</h3>
-        <input type="text" name="requester_name" placeholder="مقدم الطلب" required>
-        
-        <select name="department" required>
-            <option value="" disabled selected>القسم والإدارة</option>
-            <option value="مكتب الأمين العام">مكتب الأمين العام</option>
-            <option value="مكتب نائب الأمين العام">مكتب نائب الأمين العام</option>
-            <option value="إدارة الخدمات المشتركة">إدارة الخدمات المشتركة</option>
-            <option value="القانونية">القانونية</option>
-            <option value="إدارة التواصل الإعلامي">إدارة التواصل الإعلامي</option>
-            <option value="المشاريع">المشاريع</option>
-            <option value="إدارة الجودة والتميز">إدارة الجودة والتميز</option>
-            <option value="العمليات">العمليات</option>
-        </select>
-
-        <input type="text" name="phone_number" placeholder="رقم الجوال" required>
-        
-        <select name="location" required>
-            <option value="" disabled selected>الموقع</option>
-            <option value="المواقف">المواقف</option>
-            <option value="المدخل">المدخل</option>
-            <option value="الطابق الثاني">الطابق الثاني</option>
-            <option value="الطابق الثالث">الطابق الثالث</option>
-            <option value="الطابق الرابع">الطابق الرابع</option>
-        </select>
-
-        <textarea name="details" placeholder="تفاصيل الصيانة المطلوبة" rows="5" required></textarea>
-        <button type="submit">إرسال البلاغ</button>
-    </form>
-
-    <!-- نموذج الزيارات والاجتماعات -->
-    <form id="meetingForm">
-        <h3>الزيارات والاجتماعات</h3>
-        <div class="input-label">
-            <img src="https://i.imgur.com/4qFuvSx.png" width="20" height="20">
-            تاريخ الزيارة
-        </div>
-        <input type="date" name="visit_date" required>
-        
-        <div class="input-label">
-            <img src="https://i.imgur.com/FnU1G7j.png" width="20" height="20">
-            وقت الزيارة
-        </div>
-        <input type="time" name="visit_time" required>
-
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="special_parking"> موقف خاص</label><br>
-            <label><input type="checkbox" name="reception"> استقبال وتوصيل الزائر</label><br>
-            <label><input type="checkbox" name="hospitality"> ضيافة</label>
-        </div>
-
-        <button type="submit">إرسال الطلب</button>
-    </form>
 </body>
 </html>
