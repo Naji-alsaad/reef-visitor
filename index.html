@@ -59,6 +59,16 @@
             text-align: right;
             margin-bottom: 10px;
         }
+        .input-label {
+            text-align: right;
+            margin-bottom: 5px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .input-label img {
+            margin-left: 5px;
+        }
     </style>
     <script>
         function toggleForm(id) {
@@ -113,22 +123,16 @@
     <!-- نموذج الزيارات والاجتماعات -->
     <form id="meetingForm">
         <h3>الزيارات والاجتماعات</h3>
-        <select name="department" required>
-            <option value="" disabled selected>اسم الإدارة في البرنامج</option>
-            <option value="مكتب الأمين العام">مكتب الأمين العام</option>
-            <option value="مكتب نائب الأمين العام">مكتب نائب الأمين العام</option>
-            <option value="إدارة الخدمات المشتركة">إدارة الخدمات المشتركة</option>
-            <option value="القانونية">القانونية</option>
-            <option value="إدارة التواصل الإعلامي">إدارة التواصل الإعلامي</option>
-            <option value="المشاريع">المشاريع</option>
-            <option value="إدارة الجودة والتميز">إدارة الجودة والتميز</option>
-            <option value="العمليات">العمليات</option>
-        </select>
-
-        <input type="text" name="requester_name" placeholder="مقدم الطلب" required>
-        <input type="text" name="visitor_name" placeholder="اسم الزائر" required>
-        <input type="text" name="visitor_number" placeholder="رقم جوال الزائر" required>
+        <div class="input-label">
+            <img src="https://i.imgur.com/4qFuvSx.png" width="20" height="20">
+            تاريخ الزيارة
+        </div>
         <input type="date" name="visit_date" required>
+        
+        <div class="input-label">
+            <img src="https://i.imgur.com/FnU1G7j.png" width="20" height="20">
+            وقت الزيارة
+        </div>
         <input type="time" name="visit_time" required>
 
         <div class="checkbox-group">
