@@ -102,3 +102,34 @@
 
 </body>
 </html>
+<script>
+  const form = document.getElementById('contact-form');
+  const message = document.getElementById('form-message');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        message.style.color = 'green';
+        message.textContent = 'تم إرسال الطلب بنجاح!';
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      message.style.color = 'red';
+      message.textContent = 'حدث خطأ أثناء الإرسال. حاول لاحقاً.';
+    }
+  });
+</script>
+
+</body>
+</html>
