@@ -1,126 +1,142 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نموذج الاجتماعات والزيارات</title>
-    <style>
-        body {
-            font-family: "Arial", sans-serif;
-            direction: rtl;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 100%;
-            max-width: 400px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            margin-bottom: 5px;
-            display: block;
-            color: #333;
-            font-weight: bold;
-        }
-        select, input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background-color: #8e44ad;
-            border: none;
-            color: white;
-            font-size: 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #5e2d77;
-        }
-        .checkbox-group {
-            margin-bottom: 15px;
-        }
-        .checkbox-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نموذج الاجتماعات والزيارات</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      direction: rtl;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      margin-bottom: 5px;
+      display: block;
+      color: #333;
+      font-weight: bold;
+    }
+    select, input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #8e44ad;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #5e2d77;
+    }
+    .checkbox-group {
+      margin-bottom: 15px;
+    }
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    #form-message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>نموذج الاجتماعات والزيارات</h2>
- <form action="https://formspree.io/f/xpwdnyll" method="POST" accept="application/json">
-  <input type="email" name="email" required>
-  <textarea name="message" required></textarea>
-  <button type="submit">Send</button>
-</form>
-        <label>اسم الإدارة:</label>
-        <select>
-          
+  <h2>نموذج الاجتماعات والزيارات</h2>
+  <form id="contact-form" action="https://formspree.io/f/xpwdnyll" method="POST" accept="application/json">
+    
+    <label>اسم الإدارة:</label>
+    <select name="اسم الإدارة" required>
+      <option>مكتب الأمين العام</option>
+      <option>مكتب نائب الأمين العام</option>
+      <option>إدارة الخدمات المشتركة</option>
+      <option>إدارة التواصل الإعلامي</option>
+      <option>ادارة الجودة والتميز</option>
+      <option>القانونية</option>
+      <option>المالية</option>
+      <option>HR</option>
+      <option>المشتريات</option>
+      <option>المشاريع</option>
+      <option>القطاعات</option>
+      <option>العمليات</option>
+      <option>الاتصالات الإدارية</option>
+    </select>
 
+    <label>اسم الزائر:</label>
+    <input type="text" name="اسم الزائر" placeholder="أدخل اسم الزائر" required>
 
+    <label>رقم جوال الزائر:</label>
+    <input type="tel" name="رقم جوال الزائر" placeholder="05XXXXXXXX" required>
 
-‏            <option>مكتب الأمين العام</option>
-‏            <option>مكتب نائب الأمين العام</option>
-‏            <option>إدارة الخدمات المشتركة</option>
-‏            <option>إدارة التواصل الإعلامي</option>
+    <label>وقت الزيارة:</label>
+    <input type="time" name="وقت الزيارة" required>
 
-‏        <option> ادارة الجودة والتميز </option>
+    <label>تاريخ الزيارة:</label>
+    <input type="date" name="تاريخ الزيارة" required>
 
-‏        <option>القانونية</option>
+    <div class="checkbox-group">
+      <label>آمل توفير التالي:</label>
+      <label><input type="checkbox" name="موقف خاص"> موقف خاص</label>
+      <label><input type="checkbox" name="استقبال وتوصيل الزائر"> استقبال وتوصيل الزائر</label>
+      <label><input type="checkbox" name="ضيافة"> ضيافة</label>
+    </div>
 
-‏        <option> المالية </option>
-
-‏        <option> HR </option>
-
-‏        <option> المشتريات </option>
-
-‏        <option> المشاريع </option>
-
-‏        <option> القطاعات </option>
-
-‏        <option> العمليات </option>
-
-‏        <option> الاتصالات الإدارية </option>
-        </select>
-
-        ‏      <label>مقدم الطلب:</label>
-‏        <input type="text" placeholder="أدخل الاسم ">
-        
-        <label>اسم الزائر:</label>
-        <input type="text" placeholder="أدخل اسم الزائر">
-
-        <label>رقم الزائر:</label>
-        <input type="tel" placeholder="05XXXXXXXX">
-
-        <label>وقت الزيارة:</label>
-        <input type="time">
-
-        <label>تاريخ الزيارة:</label>
-        <input type="date">
-
-        <div class="checkbox-group">
-            <label>آمل توفير التالي:</label>
-            <label><input type="checkbox"> موقف خاص</label>
-            <label><input type="checkbox"> استقبال وتوصيل الزائر</label>
-            <label><input type="checkbox"> ضيافة</label>
-        </div>
-
-        <button type="submit">إرسال الطلب</button>
-    </form>
+    <button type="submit">إرسال الطلب</button>
+    <div id="form-message"></div>
+  </form>
 </div>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const message = document.getElementById('form-message');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        message.style.color = 'green';
+        message.textContent = 'تم إرسال الطلب بنجاح!';
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      message.style.color = 'red';
+      message.textContent = 'حدث خطأ أثناء الإرسال. حاول لاحقاً.';
+    }
+  });
+</script>
 
 </body>
 </html>
