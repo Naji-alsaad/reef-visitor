@@ -48,29 +48,32 @@
     button:hover {
       background-color: #00563b;
     }
+    .message {
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
   <h2>نموذج الصيانة المطلوبة</h2>
-  <form id="contact-form" action="https://formspree.io/f/xpwdnyll" method="POST" accept="application/json">
+  
+  <form id="maintenanceForm" action="https://formspree.io/f/xpwdnyll" method="POST" onsubmit="return showMessage();">
     
-    <!-- منع السبام -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="طلب صيانة جديد">
-    <input type="hidden" name="_template" value="table">
-
     <label>القسم والإدارة:</label>
     <select name="القسم والإدارة" required>
       <option>مكتب الأمين العام</option>
       <option>مكتب نائب الأمين العام</option>
-      <option> الخدمات المشتركة</option>
-      <option> التواصل الإعلامي</option>
-      <option> الجودة والتميز</option>
+      <option>إدارة الخدمات المشتركة</option>
+      <option>إدارة التواصل الإعلامي</option>
+      <option>ادارة الجودة والتميز</option>
       <option>القانونية</option>
       <option>المالية</option>
-      <option>الموارد البشرية</option>
+      <option>HR</option>
       <option>المشتريات</option>
       <option>المشاريع</option>
       <option>القطاعات</option>
@@ -88,7 +91,7 @@
     </select>
 
     <label>تفاصيل الصيانة المطلوبة:</label>
-    <textarea name="تفاصيل الصيانة" placeholder=" الصيانة المطلوبة " required></textarea>
+    <textarea name="تفاصيل الصيانة" placeholder="أدخل تفاصيل الصيانة" required></textarea>
 
     <label>مقدم الطلب:</label>
     <input type="text" name="مقدم الطلب" placeholder="أدخل الاسم" required>
@@ -96,39 +99,22 @@
     <label>رقم الجوال:</label>
     <input type="tel" name="رقم الجوال" placeholder="05XXXXXXXX" required>
 
-  <button type="submit">إرسال الطلب</button>
+    <button type="submit">إرسال الطلب</button>
   </form>
+
+  <div id="successMessage" class="message">شكرًا لك، تم إرسال الطلب بنجاح!</div>
 </div>
 
-</body>
-</html>
 <script>
-  const form = document.getElementById('contact-form');
-  const message = document.getElementById('form-message');
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(form).entries());
-
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (res.ok) {
-        message.style.color = 'green';
-        message.textContent = 'تم إرسال الطلب بنجاح!';
-        form.reset();
-      } else {
-        throw new Error();
-      }
-    } catch {
-      message.style.color = 'red';
-      message.textContent = 'حدث خطأ أثناء الإرسال. حاول لاحقاً.';
-    }
-  });
+  function showMessage() {
+    const form = document.getElementById('maintenanceForm');
+    const message = document.getElementById('successMessage');
+    
+    form.style.display = 'none';
+    message.style.display = 'block';
+    
+    return true; // يجب أن يبقى true ليتم الإرسال إلى Formspree
+  }
 </script>
 
 </body>
