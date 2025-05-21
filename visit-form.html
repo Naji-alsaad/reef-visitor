@@ -105,11 +105,22 @@
     <label>تاريخ الزيارة:</label>
     <input type="date" name="تاريخ الزيارة" required>
 
-    <div class="checkbox-group">
-      <label>آمل توفير التالي:</label>
-      <label><input type="checkbox" name="الخدمات_الإضافية[]" value="موقف خاص"> موقف خاص</label>
-      <label><input type="checkbox" name="الخدمات_الإضافية[]" value="استقبال وتوصيل الزائر"> استقبال وتوصيل الزائر</label>
-      <label><input type="checkbox" name="الخدمات_الإضافية[]" value="ضيافة"> ضيافة</label>
+  <!-- مربعات الاختيار -->
+‏    <label>آمل توفير التالي:</label>
+‏    <div class="checkbox-group">
+‏      <label class="checkbox-item">
+‏        <input type="checkbox" name="الخدمات_الإضافية[]" value="موقف خاص">
+        موقف خاص
+‏      </label>
+‏      <label class="checkbox-item">
+‏        <input type="checkbox" name="الخدمات_الإضافية[]" value="استقبال وتوصيل الزائر">
+        استقبال وتوصيل الزائر
+‏      </label>
+‏      <label class="checkbox-item">
+‏        <input type="checkbox" name="الخدمات_الإضافية[]" value="ضيافة">
+        ضيافة
+‏      </label>
+‏    </div>
     </div>
 
     <button type="submit">إرسال الطلب</button>
