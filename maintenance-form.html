@@ -47,6 +47,25 @@
       text-align: center;
       margin-top: 15px;
     }
+
+    /* تنسيق مربعات الاختيار */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      margin-left: 10px;
+      width: 18px;
+      height: 18px;
+    }
   </style>
 </head>
 <body>
@@ -57,29 +76,19 @@
   <form id="maintenanceForm">
     <label>القسم والإدارة:</label>
     <select name="القسم والإدارة" required>
-     
-‏            <option>مكتب الأمين العام</option>
-‏            <option>مكتب نائب الأمين العام</option>
-‏            <option> الخدمات المشتركة</option>
-‏            <option> التواصل الإعلامي</option>
-
-‏        <option> الجودة والتميز </option>
-
-‏        <option>القانونية</option>
-
-‏        <option> المالية </option>
-
-‏        <option> الموارد البشرية </option>
-
-‏        <option> المشتريات </option>
-
-‏        <option> المشاريع </option>
-
-‏        <option> القطاعات </option>
-
-‏        <option> العمليات </option>
-
-‏        <option> الاتصالات الإدارية </option>
+      <option>مكتب الأمين العام</option>
+      <option>مكتب نائب الأمين العام</option>
+      <option>الخدمات المشتركة</option>
+      <option>التواصل الإعلامي</option>
+      <option>الجودة والتميز</option>
+      <option>القانونية</option>
+      <option>المالية</option>
+      <option>الموارد البشرية</option>
+      <option>المشتريات</option>
+      <option>المشاريع</option>
+      <option>القطاعات</option>
+      <option>العمليات</option>
+      <option>الاتصالات الإدارية</option>
     </select>
 
     <label>الموقع:</label>
@@ -87,15 +96,36 @@
       <option>المواقف</option>
       <option>المدخل</option>
       <option>الطابق الثاني</option>
-       <option>الطابق الثالث</option>
-        <option>الطابق الرابع</option>        
+      <option>الطابق الثالث</option>
+      <option>الطابق الرابع</option>        
     </select>
-‏    <label>تفاصيل الصيانة المطلوبة:</label>
-‏    <textarea name="تفاصيل الصيانة" placeholder=" الصيانة المطلوبة " required></textarea>
-‏    <label>مقدم الطلب:</label>
-‏    <input type="text" name="مقدم الطلب" placeholder="أدخل الاسم" required>
-‏    <label>رقم الجوال:</label>
-‏    <input type="tel" name="رقم الجوال" placeholder="05XXXXXXXX" required>
+
+    <label>تفاصيل الصيانة المطلوبة:</label>
+    <textarea name="تفاصيل الصيانة" placeholder="الصيانة المطلوبة" required></textarea>
+
+    <label>مقدم الطلب:</label>
+    <input type="text" name="مقدم الطلب" placeholder="أدخل الاسم" required>
+
+    <label>رقم الجوال:</label>
+    <input type="tel" name="رقم الجوال" placeholder="05XXXXXXXX" required>
+
+    <!-- مربعات الاختيار -->
+    <label>آمل توفير التالي:</label>
+    <div class="checkbox-group">
+      <label class="checkbox-item">
+        <input type="checkbox" name="الخدمات_الإضافية[]" value="موقف خاص">
+        موقف خاص
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" name="الخدمات_الإضافية[]" value="استقبال وتوصيل الزائر">
+        استقبال وتوصيل الزائر
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" name="الخدمات_الإضافية[]" value="ضيافة">
+        ضيافة
+      </label>
+    </div>
+
     <button type="submit">إرسال الطلب</button>
   </form>
 
