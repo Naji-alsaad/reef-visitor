@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
     }
+
     .container {
       width: 100%;
       max-width: 400px;
@@ -21,12 +22,14 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     label {
       margin-bottom: 5px;
       display: block;
       color: #333;
       font-weight: bold;
     }
+
     select, input, textarea {
       width: 100%;
       padding: 10px;
@@ -34,6 +37,7 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
     button {
       width: 100%;
       padding: 12px;
@@ -44,32 +48,32 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
-       }
+    }
 
-    /* تنسيق مربعات الاختيار */
-‏    .checkbox-group {
-‏      display: flex;
-‏      flex-direction: column;
-‏      gap: 10px;
-‏      margin-bottom: 15px;
-    }
-    
-    }
     button:hover {
       background-color: #5e2d77;
     }
+
+    /* تنسيق مربعات الاختيار */
     .checkbox-group {
       margin-bottom: 15px;
     }
-    .checkbox-group label {
+
+    .checkbox-item {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
       font-weight: normal;
     }
-    .checkbox-group input[type="checkbox"] {
-      margin-left: 10px;
+
+    .checkbox-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #8e44ad;
     }
+
     #form-message {
       text-align: center;
       margin-top: 15px;
@@ -115,22 +119,21 @@
     <label>تاريخ الزيارة:</label>
     <input type="date" name="تاريخ الزيارة" required>
 
-  <!-- مربعات الاختيار -->
-‏    <label>آمل توفير التالي:</label>
-‏    <div class="checkbox-group">
-‏      <label class="checkbox-item">
-‏        <input type="checkbox" name="الخدمات_الإضافية[]" value="موقف خاص">
-        موقف خاص
-‏      </label>
-‏      <label class="checkbox-item">
-‏        <input type="checkbox" name="الخدمات_الإضافية[]" value="استقبال وتوصيل الزائر">
-        استقبال وتوصيل الزائر
-‏      </label>
-‏      <label class="checkbox-item">
-‏        <input type="checkbox" name="الخدمات_الإضافية[]" value="ضيافة">
-        ضيافة
-‏      </label>
-‏    </div>
+    <!-- مربعات الاختيار -->
+    <label>آمل توفير التالي:</label>
+    <div class="checkbox-group">
+      <div class="checkbox-item">
+        <label for="parking">موقف خاص</label>
+        <input type="checkbox" id="parking" name="الخدمات_الإضافية[]" value="موقف خاص">
+      </div>
+      <div class="checkbox-item">
+        <label for="pickup">استقبال وتوصيل الزائر</label>
+        <input type="checkbox" id="pickup" name="الخدمات_الإضافية[]" value="استقبال وتوصيل الزائر">
+      </div>
+      <div class="checkbox-item">
+        <label for="hospitality">ضيافة</label>
+        <input type="checkbox" id="hospitality" name="الخدمات_الإضافية[]" value="ضيافة">
+      </div>
     </div>
 
     <button type="submit">إرسال الطلب</button>
@@ -142,27 +145,23 @@
   const form = document.getElementById('contact-form');
   const message = document.getElementById('form-message');
 
-  form.addEventListener('submit', async function (e) {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(form).entries());
-
+    const formData = new FormData(form);
     try {
-      const res = await fetch(form.action, {
+      const response = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: formData,
+        headers: { Accept: 'application/json' }
       });
-
-      if (res.ok) {
-        message.style.color = 'green';
-        message.textContent = 'تم إرسال الطلب بنجاح!';
+      if (response.ok) {
+        message.textContent = 'تم إرسال الطلب بنجاح.';
         form.reset();
       } else {
-        throw new Error();
+        message.textContent = 'حدث خطأ، يرجى المحاولة لاحقًا.';
       }
-    } catch {
-      message.style.color = 'red';
-      message.textContent = 'حدث خطأ أثناء الإرسال. حاول لاحقاً.';
+    } catch (error) {
+      message.textContent = 'تعذر الاتصال بالخادم.';
     }
   });
 </script>
